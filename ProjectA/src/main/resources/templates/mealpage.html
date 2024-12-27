@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add meals</title>
+    <link rel="stylesheet" href="/mealpage.css">
+</head>
+
+<body>
+    <header>
+        Meals
+    </header>
+
+    <nav>
+        <a data-th-href="@{/homepage/{name}(name=${loginUser.name})}">Home
+            <i class="homeicon"></i>
+        </a>
+        <a data-th-href="@{/accountInfo/{name}(name=${loginUser.name})}">Account Info
+            <i class="infoicon"></i>
+        </a>
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout
+            <i class="workouticon"></i>
+        </a>
+        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past datas
+            <i class="dataicon"></i>
+        </a>
+        <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard
+            <i class="leaderboardicon"></i>
+        </a>
+
+    </nav>
+
+    <section class="meal">
+        <form data-th-action="@{/addMeal/{name}(name=${loginUser.name})}" method="POST" data-th-object="${food}">
+            <table>
+                <thead>
+                    <p>Add meal for <span data-th-text="${loginUser.todayDate}"></span></p>
+                </thead>
+                <tr>
+                    <td>Meal Type</td>
+                    <td>
+                        <select name="mealType">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Food Item</td>
+                    <td>
+                        <input type="text" data-th-field="*{foodName}">
+                        <p data-th-if="${#fields.hasErrors('foodName')}">
+                            <ul>
+                                <li data-th-each = "err :${#fields.errors('foodName')}" class="error">
+                                    <span data-th-text="${err}"></span>
+                                </li>
+                            </ul>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Amount:</td>
+                    <td><input type="number" name="amount" min="1" required></td>
+                </tr>
+                <tr>
+                    <td>Serving Size:</td>
+                    <td>
+                        <select name="servingSize" required>
+                            <option value="cup">Cup</option>
+                            <option value="bowl">Bowl</option>
+                            <option value="tablespoon">Tablespoon</option>
+                            <option value="teaspoon">Teaspoon</option>
+                            <option value="ounce">Ounce</option>
+                            <option value="gram">Gram</option>
+                            <option value="serving">Serving</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <button type="submit">Add</button>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div data-th-if="${#fields.hasErrors('global')}">
+                <ul>
+                    <li data-th-each="err : ${#fields.errors('global')}">
+                        <span data-th-text="${err}"></span>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        
+    </section>
+
+
+
+</body>
+
+</html>

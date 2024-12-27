@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Create Account</title>
+	<link rel="stylesheet" href="/createpage.css">
+</head>
+
+<body>
+
+	<header class="pageTitle">
+		Calories Tracker
+	</header>
+	
+	<div class="create-box">
+		<main class="form">
+			<header class="loginTitle">User Details</header>
+			<form action="/createAccount" method="POST" data-th-object="${user}" class="loginDetails">
+				<table>
+					<tr>
+						<td>Name:</td>
+						<td>
+							<input type="text" data-th-field="*{name}" class="inputBox" placeholder="Enter Name">
+						</td>
+                        <td>
+							<p data-th-if="${#fields.hasErrors('name')}" >
+								<ul>
+									<li data-th-each = "err :${#fields.errors('name')}" class="error">
+										<span data-th-text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+                        </td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td>
+							<input type="text" data-th-field="*{password}" class="inputBox" placeholder="Enter Password">
+						</td>
+                        <td>
+							<p data-th-if="${#fields.hasErrors('password')}">
+								<ul>
+									<li data-th-each = "err :${#fields.errors('password')}" class = "error">
+										<span data-th-text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+                        </td>
+					</tr>
+					<tr>
+                        <td>Height:</td>
+						<td>
+							<input type="text" data-th-field="*{height}" class="inputBox" placeholder="Enter Height">
+						</td>
+                        <td>
+							<p data-th-if="${#fields.hasErrors('height')}">
+								<ul>
+									<li data-th-each = "err :${#fields.errors('height')}" class = "error">
+										<span data-th-text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+                        </td>
+					</tr>
+                    <tr>
+                        <td>Weight:</td>
+						<td>
+							<input type="text" data-th-field="*{weight}" class="inputBox" placeholder="Enter Weight">
+						</td>
+                        <td>
+                            <p data-th-if="${#fields.hasErrors('weight')}">
+								<ul>
+									<li data-th-each = "err :${#fields.errors('weight')}" class = "error">
+										<span data-th-text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        
+                        <td>Age:</td>
+						<td>
+							<input type="text" data-th-field="*{age}" class="inputBox" placeholder="Enter Age">
+						</td>
+                        <td>
+                            <p data-th-if="${#fields.hasErrors('age')}">
+								<ul>
+									<li data-th-each = "err :${#fields.errors('age')}" class = "error">
+										<span data-th-text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+                        </td>
+                    </tr>
+
+					<tr>
+						<td>Gender</td>
+						<td>
+							<input type="radio" th:field="*{gender}" value="male" class = "radio"/> Male
+							<input type="radio" th:field="*{gender}" value="female" class = "radio" /> Female
+						</td>
+						<td>
+							<p th:if="${#fields.hasErrors('gender')}">
+								<ul>
+									<li th:each="err : ${#fields.errors('gender')}" class="error">
+										<span th:text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<td>Activity Level</td>
+						<td>
+							<select data-th-field="*{actLevel}">
+								<option value="sedentary">0 times a week (Sedentary)</option>
+								<option value="light">1-2 times a week (Light)</option>
+								<option value="moderate">3-4 times a week (Moderate)</option>
+								<option value="active">5-6 times a week (Active)</option>
+								<option value="very_active">7 times a week (Very Active)</option>
+							</select>
+						</td>
+						<td>
+							<p th:if="${#fields.hasErrors('actLevel')}">
+								<ul>
+									<li th:each="err : ${#fields.errors('actLevel')}" class="error">
+										<span th:text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<td>Aim</td>
+						<td>
+							<select data-th-field="*{aim}">
+								<option value="maintain">Maintain</option>
+								<option value="lose">Lose</option>
+								<option value="gain">Gain</option>
+							</select>
+						</td>
+						<td>
+							<p th:if="${#fields.hasErrors('aim')}">
+								<ul>
+									<li th:each="err : ${#fields.errors('aim')}" class="error">
+										<span th:text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<button type="submit" class="button">Create</button>
+						</td>
+					</tr>
+				</table>
+	
+				<div data-th-if="${#fields.hasErrors('global')}">
+					<ul>
+						<li data-th-each="err : ${#fields.errors('global')}">
+							<span data-th-text="${err}"></span>
+						</li>
+					</ul>
+				</div>
+	
+			</form>
+			<section>
+				<form action="/loginpage" method="POST">
+					<button type="submit" class = "button_back">Back</button>
+				</form>
+			</section>
+		</main>
+	</div>
+
+	<footer class ="base">
+		<br>
+	</footer>
+
+</body>
+
+</html>

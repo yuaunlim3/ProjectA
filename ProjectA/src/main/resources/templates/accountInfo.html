@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Info</title>
+    <link rel="stylesheet" href="/accountInfo.css">
+</head>
+
+<body>
+    <header>Account Info</header>
+    <nav>
+        <a data-th-href="@{/homepage/{name}(name=${loginUser.name})}">Home
+            <i class="homeicon"></i>
+        </a>
+        <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals
+            <i class="mealicon"></i>
+        </a>
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout
+            <i class="workouticon"></i>
+        </a>
+        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past datas
+            <i class="dataicon"></i>
+        </a>
+        <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard
+            <i class="leaderboardicon"></i>
+        </a>
+
+    </nav>
+
+    <main class="info">
+        <div class="name">
+            <section>
+                <span class="text">Account Name:</span>
+                <span data-th-text="${loginUser.name}"></span></span>
+            </section>
+            <section>
+                <span class="text">Age:</span>
+                <span data-th-text="${loginUser.age}"></span> Years</span>
+            </section>
+            <section>
+                <span class="text">Gender:</span>
+                <span data-th-text="${loginUser.gender}"></span></span>
+            </section>
+        </div>
+
+
+        <div class="password">
+            <section class ="content">
+                <span class="text">Password:</span>
+                <span data-th-text="${loginUser.password}"></span>
+            </section>
+            <div class="change">
+                <p class="title">Change Password</p>
+                <form data-th-action="@{/accountInfo/{name}(name=${loginUser.name})}" method="POST" class="form">
+                    <input type="text" name="newPassword" placeholder="Change password">
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+
+        <section class="id">
+            <span class="text">User Id:</span>
+            <span data-th-text="${loginUser.id}"></span>
+        </section>
+
+        <div class="date">
+            <section>
+                <span class="text">Last Login Date:</span>
+                <span data-th-text="${loginUser.lastLogin}"></span>
+            </section>
+            <section>
+                <span class="text">Date Created:</span>
+                <span data-th-text="${loginUser.createdDate}"></span>
+            </section>
+        </div>
+
+        <div class="height">
+            <section class ="content">
+                <span class="text">Height</span>
+                <span data-th-text="${loginUser.height}"></span>cm
+            </section>
+            <div class="change">
+                <p class="title">Update Height</p>
+                <form data-th-action="@{/accountInfo/{name}(name=${loginUser.name})}" method="POST" class="form">
+                    <input type="text" name="height" placeholder="Update height">
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="weight">
+            <section class ="content">
+                <span class="text">Weight</span>
+                <span data-th-text="${loginUser.weight}"></span>kg
+            </section>
+            <div class="change">
+                <p class="title">Update weight</p>
+                <form data-th-action="@{/accountInfo/{name}(name=${loginUser.name})}" method="POST" class="form">
+                    <input type="text" name="weight" placeholder="Update weight">
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="level">
+            <section class ="content">
+                <span class="text">Activity Level</span>
+                <span data-th-text="${loginUser.actLevel}"></span>
+            </section>
+            <div class="change">
+                <p class="title">Update Activity Level</p>
+                <form data-th-action="@{/accountInfo/{name}(name=${loginUser.name})}" method="POST" class="form">
+                    <td>
+                        <select name = "actLevel">
+                            <option value="sedentary">0 times a week (Sedentary)</option>
+                            <option value="light">1-2 times a week (Light)</option>
+                            <option value="moderate">3-4 times a week (Moderate)</option>
+                            <option value="active">5-6 times a week (Active)</option>
+                            <option value="very_active">7 times a week (Very Active)</option>
+                        </select>
+                    </td>
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="aim">
+            <section class ="content">
+                <span class="text">Target</span>
+                <span data-th-text="${loginUser.aim}"></span>
+            </section>
+            <div class="change">
+                <p class="title">Update Target</p>
+                <form data-th-action="@{/accountInfo/{name}(name=${loginUser.name})}" method="POST" class="form">
+                    <td>
+                        <select name = "aim">
+                            <option value="maintain">Maintain</option>
+                            <option value="lose">Lose</option>
+                            <option value="gain">Gain</option>
+                        </select>
+                    </td>
+                    <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(45deg, #d3d3d3, #a9a9a9, #808080, #696969, #000000);
+    background-attachment: fixed;
+    background-size: 500%;
+    animation: backgroundAnimation 4s infinite ease;
+}
+
+@keyframes backgroundAnimation{
+    0%,100%{
+        background-position: 0% 50%;
+    }
+
+    50%{
+        background-position: 100% 50%;
+    }
+}
+
+header {
+    background-color: black;
+    color: white;
+    font-size: 4vw; 
+    padding: 2vw;
+    font-weight: bolder;
+    text-align: center;
+}
+
+nav {
+    background-color: rgb(117, 114, 114);
+    overflow: hidden;
+    box-shadow: 2px 2px 10px white;
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    float: left;
+    text-align: center;
+    padding: 1vw 1.5vw; 
+    font-size: 2vw; 
+    text-decoration: none;
+    transform: 90ms;
+}
+
+nav a:hover {
+    background-color: yellow;
+    color: black;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+nav a:active {
+    background-color: rgb(0, 213, 0);
+    color: black;
+}
+
+.dataicon {
+    background-image: url('/icons/data.png'); 
+    width: 2vw;   
+    height: 2vw;     
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    display: inline-block;  
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    display: inline-block;
+}
+
+.homeicon {
+    background-image: url('/icons/home.png'); 
+    width: 2vw;   
+    height: 2vw;      
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    display: inline-block;    
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    display: inline-block;
+}
+
+.mealicon {
+    background-image: url('/icons/meal.png'); 
+    width: 2vw;   
+    height: 2vw;     
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    display: inline-block;
+}
+
+.workouticon {
+    background-image: url('/icons/workout.png'); 
+    width: 2vw;   
+    height: 2vw;     
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    display: inline-block;
+}
+
+.leaderboardicon {
+    background-image: url('/icons/leaderboard.png'); 
+    width: 2vw;   
+    height: 2vw;      
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    display: inline-block;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.name,.password,.id,.date,.height, .weight ,.level,.aim{
+    background: linear-gradient(to right, yellow, orange);
+    width: 35vw;
+    height: 15vw;
+    padding: 5vw;
+    margin: 8vw;
+    font-size: 2.5vw;
+    color: black;
+    box-shadow: 2px 5px 5px yellow;
+    border-radius: 20px;
+    font-weight: bolder;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display:block;
+}
+
+
+.text {
+    font-size: 2vw;
+    font-weight: normal;
+}
+
+
+
+.content {
+    width: 48px;
+    fill: #333;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.password:hover, .height:hover, .weight:hover, .level:hover,.aim:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.change {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55vw;
+    height: 30vw;
+    padding: 5vw;
+    box-sizing: border-box;
+    background: linear-gradient(to right, yellow, orange);
+    box-shadow: 2px 5px 5px yellow;
+    border-radius: 20px;
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    align-content: center;
+}
+
+.password:hover .change, .height:hover .change, .weight:hover .change, .level:hover .change,.aim:hover .change{
+    transform: rotateX(0deg);
+}
+
+.title {
+    font-size: 5vw;
+    color: #333;
+    font-weight:bolder;
+}
+
+
+.form {
+    margin: 10px 0 0;
+    font-size: 2.5vw;
+    color: #777;
+    line-height: 1.4;
+}
+.form input{
+    font-size: 1.5vw;
+    width: 15vw;
+}
+.form select {
+    font-size: 1.5vw;
+    width: 20vw;
+}
+
+.form button {
+    font-size: 1vw;
+    cursor: pointer;
+    transition: all 0.7s;
+}
+
+.form button:hover {
+    background: blue;
+    color: white;
+    border-radius: 4vw;
+}
+
+
+.base {
+    background-color: black;
+    color: white;
+    font-size: 50px;
+    padding: 20px;
+    font-weight: bolder;
+    text-align: center;
+    box-shadow: 10px 10px 10px 20px white;
+    
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+  }

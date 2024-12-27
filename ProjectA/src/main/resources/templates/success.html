@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/success.css">
+</head>
+<body>
+    <header> Success page</header>
+    <nav>
+        <a data-th-href="@{/homepage/{name}(name=${loginUser.name})}">Home</a>
+        <a data-th-href="@{/accountInfo/{name}(name=${loginUser.name})}">Account Info</a>
+        <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals</a>
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout</a>
+        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past datas</a>
+        <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard</a>
+    </nav>
+
+    <main class="success">
+        <div class="card">
+            <h2> <span data-th-text="${message}"></span> successfully added</h2>
+        </div>
+    </main>
+
+    <footer class="base">
+        <br>
+    </footer>
+</body>
+</html>

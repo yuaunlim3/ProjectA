@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/loginpage.css">
+</head>
+<body>
+
+	<header class = "pageTitle">
+		Calories Tracker
+	</header>
+	<main class ="container">
+		<div class="login-box">
+			<p>Login</p>
+			<form action="/login" method="POST" data-th-object="${user}" class="loginDetails">
+			  
+			  <div class="user-box">
+				<input type="text" data-th-field="*{name}" class="inputBox" required>
+				<label>Name</label>
+				<p data-th-if="${#fields.hasErrors('name')}">
+				  <ul>
+					<li data-th-each="err :${#fields.errors('name')}" class="error">
+					  <span data-th-text="${err}"></span>
+					</li>
+				  </ul>
+				</p>
+			  </div>
+		  
+			  <div class="user-box">
+				<input type="password" data-th-field="*{password}" class="inputBox" required>
+				<label>Password</label>
+				<p data-th-if="${#fields.hasErrors('password')}">
+				  <ul>
+					<li data-th-each="err :${#fields.errors('password')}" class="error">
+					  <span data-th-text="${err}"></span>
+					</li>
+				  </ul>
+				</p>
+			  </div>
+		  
+			  <button type="submit" class="submit-button">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				Submit
+			  </button>
+			</form>
+			
+			
+			<p>Don't have an account? <a href="/create" class="a2">Sign up!</a></p>
+		  </div>
+		  
+		  
+	
+		<footer class ="base">
+			<br>
+		</footer>
+	</main>
+</body>
+</html>
+

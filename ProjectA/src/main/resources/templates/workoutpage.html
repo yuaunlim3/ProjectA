@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add workouts</title>
+    <link rel="stylesheet" href="/workout.css">
+</head>
+
+<body>
+    <header>
+        Workout
+    </header>
+
+    <nav>
+        <a data-th-href="@{/homepage/{name}(name=${loginUser.name})}">Home
+            <i class="homeicon"></i>
+        </a>
+        <a data-th-href="@{/accountInfo/{name}(name=${loginUser.name})}">Account Info
+            <i class="infoicon"></i>
+        </a>
+        <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals
+            <i class="mealicon"></i>
+        </a>
+        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past datas
+            <i class="dataicon"></i>
+        </a>
+        <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard
+            <i class="leaderboardicon"></i>
+        </a>
+
+    </nav>
+
+    <main class="workout">
+        <form data-th-action="@{/addworkout/{name}(name=${loginUser.name})}" method="POST" data-th-object="${workout}">
+            <table>
+                <thead>
+                    <p>Add workout for <span data-th-text="${loginUser.todayDate}"></span></p>
+                </thead>
+                <tr>
+                    <td>
+                        Workout Details
+                    </td>
+                    <td>
+                        <textarea data-th-field="*{name}"></textarea>
+                        <p data-th-if="${#fields.hasErrors('name')}" >
+                            <ul>
+                                <li data-th-each = "err :${#fields.errors('name')}" class="error">
+                                    <span data-th-text="${err}"></span>
+                                </li>
+                            </ul>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Exercise Type
+                    </td>
+                    <td>
+                        <select data-th-field="*{type}">
+                            <option value="Cardio">Cardio</option>
+                            <option value="Gym">Gym</option>
+                            <option value="Strength">Strength</option>
+                            <option value="Yoga">Yoga</option>
+                            <option value="Stretching">Stretching</option>
+                            <option value="Sports">Sports</option>
+                        </select>
+                        <p data-th-if="${#fields.hasErrors('type')}">
+                            <ul>
+                                <li data-th-each="err : ${#fields.errors('type')}" class="error">
+                                    <span data-th-text="${err}"></span>
+                                </li>
+                            </ul>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Duration
+                    </td>
+                    <td>
+                        <input type="text" data-th-field = "*{durations}" placeholder="Minutes">
+                        <p data-th-if="${#fields.hasErrors('durations')}">
+                            <ul>
+                                <li data-th-each = "err :${#fields.errors('durations')}" class="error">
+                                    <span data-th-text="${err}"></span>
+                                </li>
+                            </ul>
+                        </p>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td>
+                        <button type="submit">Add</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </main>
+</body>
+
+</html>

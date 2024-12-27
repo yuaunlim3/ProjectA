@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data page</title>
+    <link rel="stylesheet" href="/datapage.css">
+
+</head>
+
+<body>
+    <header>Data page</header>
+    <nav>
+        <a data-th-href="@{/homepage/{name}(name=${loginUser.name})}">Home
+            <i class="homeicon"></i>
+        </a>
+        <a data-th-href="@{/accountInfo/{name}(name=${loginUser.name})}">Account Info
+            <i class="infoicon"></i>
+        </a>
+        <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals
+            <i class="mealicon"></i>
+        </a>
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout
+            <i class="workouticon"></i>
+        </a>
+        <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard
+            <i class="leaderboardicon"></i>
+        </a>
+    </nav>
+
+
+    <main class="average">
+        <div>
+            <table>
+                <thead>
+                    <p>Average Datas for <span data-th-text="${loginUser.name}"></span></p>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <i class="food"></i>
+                            <span>Food consumed</span>
+                        </td>
+                        <td data-th-each="entry : ${loginUser.averageWorkout}">
+                            <span data-th-if="${entry.key == 'Cardio'}">
+                                <i class="cardio"></i>
+                                <span data-th-text="${entry.key}"></span>
+                            </span>
+                            <span data-th-if="${entry.key == 'Gym'}">
+                                <i class="gym"></i>
+                                <span data-th-text="${entry.key}"></span>
+                            </span>
+                            <span data-th-if="${entry.key == 'Yoga'}">
+                                <i class="yoga"></i>
+                                <span data-th-text="${entry.key}"></span>
+                            </span>
+                            <span data-th-if="${entry.key == 'Strength'}">
+                                <i class="strength"></i>
+                                <span data-th-text="${entry.key}"></span>
+                            </span>
+                            <span data-th-if="${entry.key == 'Stretching'}">
+                                <i class="stretch"></i>
+                                <span data-th-text="${entry.key}"></span>
+                            </span>
+                            <span data-th-if="${entry.key == 'Sports'}">
+                                <i class="sports"></i>
+                                <span data-th-text="${entry.key}"></span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <span data-th-text="${loginUser.averageIntake}"></span> kcal</td>
+                        <td data-th-each="entry : ${loginUser.averageWorkout}"> <span
+                                data-th-text="${entry.value}"></span> mins
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </main>
+
+    <section class="search">
+        <form data-th-action="@{/datas/{name}(name=${loginUser.name})}" method="POST">
+            <table>
+                <tr>
+                    <td>
+                        <select name="category" class="category custom-select">
+                            <option value="consumed">Consumed</option>
+                            <option value="workout">Workout</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="month" class="category custom-select">
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <select name="year" class="category custom-select">
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <button type="submit" class="button custom-button">Search</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+
+
+        <div data-th-if="${query == 'consumed'}">
+            <div data-th-if="${#lists.isEmpty(result)}">
+                <p>No data available</p>
+            </div>
+            <div data-th-each="entry : ${result}" class="intake">
+                <h4>Date: <span data-th-text="${entry.date}"></span></h4>
+                <h4>The total Calories consumed: <span data-th-text="${entry.totalCalories}"></span> kcal</h4>
+                <table data-th-each="meal : ${entry.meal}">
+                    <tr>
+                        <td>
+                            <span data-th-text="${meal.key}"></span>
+                            <table>
+                                <tr>
+                                    <th>Food</th>
+                                    <th>Calories Consumed</th>
+                                </tr>
+                                <tr data-th-each="food : ${meal.value}">
+                                    <td data-th-text="${food.foodName}"></td>
+                                    <td><span data-th-text="${food.formattedCalories}"></span> kcal</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+            </div>
+        </div>
+
+
+        <div data-th-if="${query == 'workout'}">
+            <div data-th-if="${#lists.isEmpty(result)}">
+                <p>No data available</p>
+            </div>
+            <div data-th-each="entry : ${result}" class="burnt">
+                <h4>Date: <span data-th-text="${entry.date}"></span></h4>
+                <h4>The total Calories consumed: <span data-th-text="${entry.totalCalories}"></span> kcal</h4>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td data-th-each="type : ${entry.types}">
+                                <span data-th-if="${type.key == 'Cardio'}">
+                                    <i class="cardio"></i>
+                                    <span data-th-text="${type.key}"></span>
+                                </span>
+                                <span data-th-if="${type.key == 'Gym'}">
+                                    <i class="gym"></i>
+                                    <span data-th-text="${type.key}"></span>
+                                </span>
+                                <span data-th-if="${type.key == 'Yoga'}">
+                                    <i class="yoga"></i>
+                                    <span data-th-text="${type.key}"></span>
+                                </span>
+                                <span data-th-if="${type.key == 'Strength'}">
+                                    <i class="strength"></i>
+                                    <span data-th-text="${type.key}"></span>
+                                </span>
+                                <span data-th-if="${type.key == 'Stretching'}">
+                                    <i class="stretch"></i>
+                                    <span data-th-text="${type.key}"></span>
+                                </span>
+                                <span data-th-if="${type.key == 'Sports'}">
+                                    <i class="sports"></i>
+                                    <span data-th-text="${type.key}"></span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-th-each="type : ${entry.types}"> <span data-th-text="${type.value}"></span>mins
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>

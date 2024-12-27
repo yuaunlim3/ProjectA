@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="/leaderboard.css">
+</head>
+
+<body>
+    <header>Data page</header>
+    <nav>
+        <a data-th-href="@{/homepage/{name}(name=${loginUser.name})}">Home
+            <i class="homeicon"></i>
+        </a>
+        <a data-th-href="@{/accountInfo/{name}(name=${loginUser.name})}">Account Info
+            <i class="infoicon"></i>
+        </a>
+        <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals
+            <i class="mealicon"></i>
+        </a>
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout
+            <i class="workouticon"></i>
+        </a>
+        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past datas
+            <i class="dataicon"></i>
+        </a>
+    </nav>
+
+    <main>
+
+        <section class="leaderboard">
+            <form data-th-action="@{/leaderboard/{name}(name=${loginUser.name})}" method="POST">
+                <table>
+                    <tr>
+                        <td>
+                            <select name="category" class="category custom-select">
+                                <option value="intake">Intake</option>
+                                <option value="burnt">Burnt</option>
+                                <option value="net">Net</option>
+                                <option value="days">Days in a row</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="submit" class="button custom-button">Search</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <table class="leaderboard_table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>User</th>
+                        <th>Intake</th>
+                        <th>Burnt</th>
+                        <th>Net</th>
+                        <th>Days in a row</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="user, iterStat : ${leaderboard}" class="leaderboard-row"
+                        data-th-classappend="|${iterStat.index == 0 ? 'gold' : (iterStat.index == 1 ? 'silver' : (iterStat.index == 2 ? 'bronze' : ''))}|">
+                        <td data-th-text="${iterStat.index + 1}"></td>
+                        <td data-th-text="${user.name}"></td>
+                        <td data-th-text="${user.averageIntake}"></td>
+                        <td data-th-text="${user.averageBurnt}"></td>
+                        <td data-th-text="${user.averageNet}"></td>
+                        <td data-th-text="${user.daysLogin}"></td>
+
+                        <td data-th-if="${loginUser.name != user.name}" class="search">
+                            <section class="searchLink">
+                                <a
+                                    data-th-href="@{/datas/{loginName}/{name}(loginName=${loginUser.name}, name=${user.name})}">
+                                    <span class="circle" aria-hidden="true">
+                                        <span class="icon arrow"></span>
+                                    </span>
+                                </a>
+
+
+
+                            </section>
+
+
+                        </td>
+                        <td data-th-if="${loginUser.name == user.name}" class="search"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+    </main>
+
+</body>
+
+</html>
