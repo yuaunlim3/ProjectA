@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(45deg, #d3d3d3, #a9a9a9, #808080, #696969, #000000);
+    background-attachment: fixed;
+    background-size: 500%;
+    animation: backgroundAnimation 4s infinite ease;
+}
+
+@keyframes backgroundAnimation {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+header {
+    background-color: black;
+    color: white;
+    font-size: 4vw;
+    padding: 2vw;
+    font-weight: bolder;
+    text-align: center;
+}
+
+nav {
+    background-color: rgb(117, 114, 114);
+    overflow: hidden;
+    box-shadow: 2px 2px 10px white;
+
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    float: left;
+    text-align: center;
+    padding: 1vw 1.5vw;
+    font-size: 2vw;
+    text-decoration: none;
+    transform: 90ms;
+}
+
+nav a:hover {
+    background-color: yellow;
+    color: black;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+nav a:active {
+    background-color: rgb(0, 213, 0);
+    color: black;
+}
+
+.homeicon {
+    background-image: url('/icons/home.png');
+    width: 2vw;
+    height: 2vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.infoicon {
+    background-image: url('/icons/info.png');
+    width: 2vw;
+    height: 2vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.mealicon {
+    background-image: url('/icons/meal.png');
+    width: 2vw;
+    height: 2vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.workouticon {
+    background-image: url('/icons/workout.png');
+    width: 2vw;
+    height: 2vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.leaderboardicon {
+    background-image: url('/icons/leaderboard.png');
+    width: 2vw;
+    height: 2vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.data {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+    margin: 2vw;
+}
+
+
+.info {
+    flex: 0.1; 
+    background: linear-gradient(to right, yellow, orange); 
+    font-size: 1.5vw;
+    padding: 2vw; 
+    border-radius: 10px; 
+    color: black;
+    box-shadow: 2px 5px 5px rgb(228, 228, 219);
+    border-radius: 10px;
+    margin-top: 2vw;
+}
+
+.info table{
+    margin-bottom: 4vw;
+}
+
+
+
+.average {
+    background: linear-gradient(to right, yellow, orange);
+    padding: 2vw;
+    margin: 2vw;
+    font-size: 1vw;
+    color: black;
+    box-shadow: 2px 5px 5px rgb(228, 228, 219);
+    border-radius: 10px;
+    font-weight: bolder;
+}
+
+.average table {
+    width: 90%;
+    table-layout: fixed;
+    padding: 4vw;
+    border-collapse: collapse;
+    border-spacing: 2vw;
+}
+
+.average td {
+    padding: 1vw;
+    text-align: center;
+}
+
+.food {
+    background-image: url('/icons/food.png');
+    width: 4vw;
+    height: 4vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.cardio {
+    background-image: url('/icons/run.png');
+    width: 4vw;
+    height: 4vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.gym {
+    background-image: url('/icons/gym.png');
+    width: 4vw;
+    height: 4vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.strength {
+    background-image: url('/icons/strength.png');
+    width: 4vw;
+    height: 4vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.yoga {
+    background-image: url('/icons/yoga.png');
+    width: 4vw;
+    height: 4vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.sports {
+    background-image: url('/icons/sports.png');
+    width: 4vw;
+    height: 4vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.stretch {
+    background-image: url('/icons/stretch.png');
+    width: 4vw;
+    height: 4vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+
+.search {
+    background: linear-gradient(to right, rgb(168, 255, 133), rgb(17, 255, 0));
+    padding: 4vw;
+    margin: 2vw;
+    font-size: 2vw;
+    color: black;
+    box-shadow: 2px 5px 5px rgb(48, 255, 1);
+    border-radius: 10px;
+    font-weight: bolder;
+}
+
+.custom-select {
+    font-size: 2vw;
+    width: 15vw;
+}
+
+
+.custom-button {
+    font-size: 2vw;
+    width: 15vw;
+}
+
+.search table {
+    width: 100%;
+    table-layout: fixed;
+    padding: 4vw;
+    border-collapse: collapse;
+}
+
+.search thead td {
+    padding: 4vw;
+    text-align: center;
+}
+
+.search td {
+    padding: 4vw;
+    text-align: center;
+}
