@@ -30,7 +30,10 @@ public class Users {
     private Stack<BurnsCal> workouts;
     private Stack<Data> overallDatas;
     private Integer daysLogin;
+    private String securityQuestion;
+    private String securityAnswer;
 
+    // From Json
     public static Users fromJson(JsonObject json) {
         Users user = new Users();
 
@@ -41,6 +44,8 @@ public class Users {
         String gender = personalData.getString("gender");
         Long age = personalData.getJsonNumber("age").longValue();
         Integer days = personalData.getInt("days_login");
+        String question = personalData.getString("security_question");
+        String answer = personalData.getString("security_answer");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate createdDate = LocalDate.parse(personalData.getString("createdDate"), dtf);
         LocalDate lastLogin = LocalDate.parse(personalData.getString("lastLogin"), dtf);
@@ -93,10 +98,13 @@ public class Users {
         user.setWorkouts(workoutsData);
         user.setOverallDatas(overallData);
         user.setDaysLogin(days);
+        user.setSecurityAnswer(answer);
+        user.setSecurityQuestion(question);
 
         return user;
     }
 
+    // To Json
     public JsonObject toJson() {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -125,6 +133,8 @@ public class Users {
                 .add("age", this.age)
                 .add("gender", this.gender)
                 .add("days_login", this.daysLogin)
+                .add("security_question",this.securityQuestion)
+                .add("security_answer",this.securityAnswer)
                 .build();
 
         JsonObject physicalData = Json.createObjectBuilder()
@@ -142,8 +152,8 @@ public class Users {
                 .build();
     }
 
+    // To Json without the important data such as password
     public JsonObject toJsonWithoutImportantData() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         JsonArrayBuilder arr = Json.createArrayBuilder();
         for (Meals meal : this.meals) {
             JsonObject mealObject = meal.toJson();
@@ -159,7 +169,7 @@ public class Users {
         for (Data data : this.overallDatas) {
             overallArr.add(data.toJson());
         }
-        
+
         JsonObject personalData = Json.createObjectBuilder()
                 .add("id", this.id)
                 .add("name", this.name)
@@ -182,6 +192,7 @@ public class Users {
                 .build();
     }
 
+    // Getters and Setters
     public String getId() {
         return id;
     }
@@ -262,8 +273,70 @@ public class Users {
         this.aim = aim;
     }
 
+    public Integer getDaysLogin() {
+        return daysLogin;
+    }
+
+    public void setDaysLogin(Integer daysLogin) {
+        this.daysLogin = daysLogin;
+    }
+
+    public String getActLevel() {
+        return actLevel;
+    }
+
+    public void setActLevel(String actLevel) {
+        this.actLevel = actLevel;
+    }
+
+    public Stack<Meals> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(Stack<Meals> meals) {
+        this.meals = meals;
+    }
+
+    public Stack<BurnsCal> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(Stack<BurnsCal> workouts) {
+        this.workouts = workouts;
+    }
+
+    public Stack<Data> getOverallDatas() {
+        return overallDatas;
+    }
+
+    public void setOverallDatas(Stack<Data> overallDatas) {
+        this.overallDatas = overallDatas;
+    }
+
+    public String getSecurityQuestion() {
+        return securityQuestion;
+    }
+
+    public void setSecurityQuestion(String securityQuestion) {
+        this.securityQuestion = securityQuestion;
+    }
+
+    public String getSecurityAnswer() {
+        return securityAnswer;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {
+        this.securityAnswer = securityAnswer;
+    }
+
+
+    /*
+    * Other methods used 
+    */
+    // Calculation of the target net amount of calories based on the physical
+    // attributes
     public Double getTarget() {
-        double bmr;
+        double bmr;// Basal Metablic Rate
         if (this.gender.equalsIgnoreCase("male")) {
             bmr = 10 * this.weight + 6.25 * this.height - 5 * this.age + 5;
         } else {
@@ -303,26 +376,12 @@ public class Users {
         }
     }
 
-    public String getActLevel() {
-        return actLevel;
-    }
-
-    public void setActLevel(String actLevel) {
-        this.actLevel = actLevel;
-    }
-
+    // Get current date
     public LocalDate todayDate() {
         return LocalDate.now();
     }
 
-    public Stack<Meals> getMeals() {
-        return meals;
-    }
-
-    public void setMeals(Stack<Meals> meals) {
-        this.meals = meals;
-    }
-
+    // Can the meals of today
     public Meals getCurrentMeal() {
         Meals meal = this.meals.peek();
         if (meal.getDate().equals(todayDate())) {
@@ -332,6 +391,7 @@ public class Users {
         return meal;
     }
 
+    // Get the workouts of today
     public BurnsCal getCurrentWorkout() {
         BurnsCal burnsCal = this.workouts.peek();
         if (burnsCal.getDate().equals(todayDate())) {
@@ -341,6 +401,7 @@ public class Users {
         return burnsCal;
     }
 
+    // Get the overall data of today
     public Data getCurrentData() {
         Data data = this.overallDatas.peek();
         if (data != null && data.getDate().equals(todayDate())) {
@@ -350,35 +411,13 @@ public class Users {
         return data;
     }
 
+    // Get the percentage of calories based on the target calculated
     public Double getPercentage() {
         Data data = getCurrentData();
         return data.getNet() / getTarget();
     }
 
-    public Stack<BurnsCal> getWorkouts() {
-        return workouts;
-    }
-
-    public void setWorkouts(Stack<BurnsCal> workouts) {
-        this.workouts = workouts;
-    }
-
-    @Override
-    public String toString() {
-        return "Users [id=" + id + ", name=" + name + ", password=" + password + ", createdDate=" + createdDate
-                + ", lastLogin=" + lastLogin + ", height=" + height + ", weight=" + weight + ", age=" + age
-                + ", gender=" + gender + ", actLevel=" + actLevel + ", aim=" + aim + ", meals=" + meals + ", workouts="
-                + workouts + "]";
-    }
-
-    public Stack<Data> getOverallDatas() {
-        return overallDatas;
-    }
-
-    public void setOverallDatas(Stack<Data> overallDatas) {
-        this.overallDatas = overallDatas;
-    }
-
+    //Get the average calories consumed - burnt
     public Double getAverageNet() {
         if (this.overallDatas.isEmpty()) {
             return 0.0;
@@ -395,6 +434,7 @@ public class Users {
         return Double.valueOf(String.format("%.2f", total / this.overallDatas.size()));
     }
 
+    // Get the average calories consumed
     public Double getAverageIntake() {
         if (this.overallDatas.isEmpty()) {
             return 0.0;
@@ -411,6 +451,7 @@ public class Users {
         return Double.valueOf(String.format("%.2f", total / this.overallDatas.size()));
     }
 
+    // Get the average calories burnt
     public Double getAverageBurnt() {
         if (this.overallDatas.isEmpty()) {
             return 0.0;
@@ -426,18 +467,12 @@ public class Users {
         return Double.valueOf(String.format("%.2f", total / this.overallDatas.size()));
     }
 
-    public Integer getDaysLogin() {
-        return daysLogin;
-    }
-
-    public void setDaysLogin(Integer daysLogin) {
-        this.daysLogin = daysLogin;
-    }
-
+    // Increase the daily login in by 1
     public void login() {
         this.daysLogin += 1;
     }
 
+    // Get the average data for each type of workouts
     public Map<String, Double> getAverageWorkout() {
         Map<String, Double> workoutTotal = new HashMap<>();
 
@@ -445,22 +480,27 @@ public class Users {
             if (burnsCal.getDate().getMonth().equals(LocalDate.now().getMonth())) {
 
                 Map<String, Double> workouts = burnsCal.getTypes();
-                System.out.println(workouts);
                 for (Map.Entry<String, Double> entry : workouts.entrySet()) {
                     workoutTotal.merge(entry.getKey(), entry.getValue(), Double::sum);
                 }
             }
         }
 
-        System.err.println(this.overallDatas.size());
-
         for (Map.Entry<String, Double> entry : workoutTotal.entrySet()) {
-            workoutTotal.put(entry.getKey(), entry.getValue() / this.overallDatas.size());
+            double average = entry.getValue() / this.overallDatas.size();
+            String roundedString = String.format("%.2f", average);
+            double roundedValue = Double.parseDouble(roundedString);
+            workoutTotal.put(entry.getKey(), roundedValue);
         }
-
-        System.out.println(workoutTotal);
         return workoutTotal;
+    }
 
+    @Override
+    public String toString() {
+        return "Users [id=" + id + ", name=" + name + ", password=" + password + ", createdDate=" + createdDate
+                + ", lastLogin=" + lastLogin + ", height=" + height + ", weight=" + weight + ", age=" + age
+                + ", gender=" + gender + ", actLevel=" + actLevel + ", aim=" + aim + ", meals=" + meals + ", workouts="
+                + workouts + ", overallDatas=" + overallDatas + ", daysLogin=" + daysLogin + "]";
     }
 
 }

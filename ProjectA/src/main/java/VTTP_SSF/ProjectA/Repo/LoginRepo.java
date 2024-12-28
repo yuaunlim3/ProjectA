@@ -140,4 +140,22 @@ public class LoginRepo {
         }
         return false;
     }
+
+    public Boolean checkAnswer(String name,String answer){
+        String info = (String) template.opsForValue().get(name);
+        if (info != null) {
+            try (JsonReader reader = Json.createReader(new StringReader(info))) {
+                JsonObject body = reader.readObject();
+                Users result = Users.fromJson(body);
+                System.out.printf("Answer: %s\n Check: %s\n",answer,result.getSecurityAnswer());
+                if (result.getSecurityAnswer().equals(answer)) {
+                    return true;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+        }
+        return false;
+    }
 }

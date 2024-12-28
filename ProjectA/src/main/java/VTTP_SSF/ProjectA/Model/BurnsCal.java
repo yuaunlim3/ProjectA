@@ -63,6 +63,7 @@ public class BurnsCal {
                 .build();
     }
 
+    //Get the total calories burnt
     public Double getTotalCalories() {
         Double total = 0.0;
         for (Workout workout : this.workoutList) {
@@ -72,11 +73,7 @@ public class BurnsCal {
         return Double.valueOf(String.format("%.2f", total));
     }
 
-    @Override
-    public String toString() {
-        return "BurnsCal [workoutList=" + workoutList + ", date=" + date + "]";
-    }
-
+    //Divide the workouts into the different category
     public Map<String, Double> getTypes() {
         Map<String, Double> workoutTypeMap = new HashMap<>();
         
@@ -91,6 +88,11 @@ public class BurnsCal {
         this.workoutList.stream()
                 .forEach(workout -> workoutTypeMap.merge(workout.getType(), workout.getDurations(), Double::sum));
         return workoutTypeMap;
+    }
+
+    @Override
+    public String toString() {
+        return "BurnsCal [workoutList=" + workoutList + ", date=" + date + "]";
     }
     
     

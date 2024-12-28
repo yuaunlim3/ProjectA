@@ -38,4 +38,8 @@ public class AccountServices {
     public String getRandomAccount(){
         return accountRepo.getRandomAccount();
     }
+
+    public void deleteAccount(String name){
+        accountRepo.deleteAccount(name);
+    }
 }

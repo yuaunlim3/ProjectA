@@ -5,13 +5,14 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import VTTP_SSF.ProjectA.Model.NewUsers;
@@ -48,6 +49,7 @@ public class LoginController {
             binding.addError(err);
             return "loginpage";
         }
+        System.out.println(user.toString());
         loginService.loginUser(user);
         return "redirect:/homepage/" + user.getName();
     }
@@ -76,5 +78,58 @@ public class LoginController {
         // System.out.println(user.toString());
         model.addAttribute("loginUser", user);
         return "homepage";
+    }
+
+    //Go to forget password page
+    @GetMapping("/forget")
+    public String forgetPage(Model model){
+        model.addAttribute("user", null);
+        return "forget";
+    }
+
+    // Provide a user 
+    @PostMapping("/forgetPassword")
+    public String forgetPassword(@RequestBody MultiValueMap<String, String> form,Model model){
+        String name = form.getFirst("name");
+        Users user = accountService.getUser(name);
+        if(name == null || name.isEmpty()){
+            model.addAttribute("errorName","Name must be given");
+            return "forget";
+        }
+        if(!loginService.checkUser(name)){
+            model.addAttribute("errorName","User is not in the database");
+            return "forget";
+        }
+        model.addAttribute("user",user);
+        return "forget";
+    }
+
+    //Provide security answer and new password
+    @PostMapping("/changePassword")
+    public String changePassword(@RequestBody MultiValueMap<String, String> form,Model model){
+        String name = form.getFirst("name");
+        Users user = accountService.getUser(name);
+        model.addAttribute("user",user);
+        String answer = form.getFirst("answer");
+        String password = form.getFirst("password");
+        Boolean error = false;
+        if(answer == null || answer.isEmpty()){
+            model.addAttribute("errorAns","Answer must be given");
+            error = true;
+        }
+        if(password == null || password.isEmpty()){
+            model.addAttribute("errorPs","New password must be given");
+            error = true;
+        }
+        if(!loginService.checkAnswer(name, answer)){
+            model.addAttribute("errorAns","Answer is incorrect");
+            error = true;
+        }
+        if (error) {
+            return "forget";
+        }
+
+        accountService.updatePassword(password, name);
+        return "redirect:/homepage/" + user.getName();
     }
 }

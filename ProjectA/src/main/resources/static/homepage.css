@@ -59,32 +59,7 @@ nav a:active {
   color: black;
 }
 
-.dataicon {
-  background-image: url('/icons/data.png');
-  width: 2vw;
-  height: 2vw;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-}
-
-.infoicon {
-  background-image: url('/icons/info.png');
-  width: 2vw;
-  height: 2vw;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-}
-
-.mealicon {
-  background-image: url('/icons/meal.png');
+.infoicon, .mealicon, .workouticon, .dataicon, .leaderboardicon {
   width: 2vw;
   height: 2vw;
   background-size: contain;
@@ -92,24 +67,11 @@ nav a:active {
   display: inline-block;
 }
 
-.workouticon {
-  background-image: url('/icons/workout.png');
-  width: 2vw;
-  height: 2vw;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-}
-
-.leaderboardicon {
-  background-image: url('/icons/leaderboard.png');
-  width: 2vw;
-  height: 2vw;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: inline-block;
-}
-
+.mealicon {background-image: url('/icons/meal.png');}
+.infoicon { background-image: url('/icons/info.png'); }
+.workouticon { background-image: url('/icons/workout.png'); }
+.dataicon { background-image: url('/icons/data.png'); }
+.leaderboardicon { background-image: url('/icons/leaderboard.png'); }
 
 
 .data {
@@ -191,6 +153,11 @@ nav a:active {
   padding: 2vw;
   text-align: center;
 }
+
+.meals strong {
+  text-transform: uppercase;
+}
+
 
 .workouts {
   background: linear-gradient(to right, rgb(162, 156, 255), rgb(61, 67, 255));

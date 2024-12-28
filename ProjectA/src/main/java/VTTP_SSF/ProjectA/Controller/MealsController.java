@@ -23,29 +23,33 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping
 public class MealsController {
-   @Autowired
-   private AccountServices accountService;
+    @Autowired
+    private AccountServices accountService;
 
-   @Autowired 
-   private MealServices mealServices;
+    @Autowired
+    private MealServices mealServices;
+
+    // Navigate from navbar
     @GetMapping("/meals/{name}")
-    public String mealPage(@PathVariable String name, Model model){
+    public String mealPage(@PathVariable String name, Model model) {
         Users user = accountService.getUser(name);
         model.addAttribute("loginUser", user);
         model.addAttribute("food", new Food());
         return "mealpage";
     }
-
+    //submit meal details
     @PostMapping("/addMeal/{name}")
-    public String addMeal(@Valid @ModelAttribute("food") Food food, BindingResult bindingResult, @PathVariable String name,@RequestParam String mealType,@RequestParam String servingSize,@RequestParam int amount, Model model) throws IOException{
-        if(bindingResult.hasErrors()){
+    public String addMeal(@Valid @ModelAttribute("food") Food food, BindingResult bindingResult,
+            @PathVariable String name, @RequestParam String mealType, @RequestParam String servingSize,
+            @RequestParam int amount, Model model) throws IOException {
+        if (bindingResult.hasErrors()) {
             Users user = accountService.getUser(name);
             model.addAttribute("loginUser", user);
             return "mealpage";
         }
 
-        Boolean check = mealServices.addFood(name, mealType, food.getFoodName(),servingSize,Integer.toString(amount));
-        if(!check){
+        Boolean check = mealServices.addFood(name, mealType, food.getFoodName(), servingSize, Integer.toString(amount));
+        if (!check) {
             ObjectError err = new ObjectError("globalError", "Food does not exist in database");
             bindingResult.addError(err);
             Users user = accountService.getUser(name);

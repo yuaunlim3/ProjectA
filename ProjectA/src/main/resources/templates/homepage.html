@@ -21,10 +21,10 @@
         <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals
             <i class="mealicon"></i>
         </a>
-        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add Workout
             <i class="workouticon"></i>
         </a>
-        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past datas
+        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past Datas
             <i class="dataicon"></i>
         </a>
         <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard
@@ -134,7 +134,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:if="${loginUser.currentMeal == null}">
+                        <tr data-th-if="${loginUser.currentMeal == null}">
                             <td colspan="2">No meal available for today</td>
                         </tr>
                         <tr th:if="${loginUser.currentMeal != null}">

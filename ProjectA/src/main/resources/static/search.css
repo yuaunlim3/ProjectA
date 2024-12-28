@@ -60,8 +60,7 @@ nav a:active {
     color: black;
 }
 
-.homeicon {
-    background-image: url('/icons/home.png');
+.homeicon, .infoicon, .mealicon, .workouticon, .dataicon, .leaderboardicon {
     width: 2vw;
     height: 2vw;
     background-size: contain;
@@ -69,41 +68,12 @@ nav a:active {
     display: inline-block;
 }
 
-.infoicon {
-    background-image: url('/icons/info.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
-
-.mealicon {
-    background-image: url('/icons/meal.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
-
-.workouticon {
-    background-image: url('/icons/workout.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
-
-.leaderboardicon {
-    background-image: url('/icons/leaderboard.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
+.mealicon {background-image: url('/icons/meal.png');}
+.homeicon { background-image: url('/icons/home.png'); }
+.infoicon { background-image: url('/icons/info.png'); }
+.workouticon { background-image: url('/icons/workout.png'); }
+.dataicon { background-image: url('/icons/data.png'); }
+.leaderboardicon { background-image: url('/icons/leaderboard.png'); }
 
 .data {
     display: flex;
@@ -158,8 +128,8 @@ nav a:active {
 
 .food {
     background-image: url('/icons/food.png');
-    width: 4vw;
-    height: 4vw;
+    width: 5vw;
+    height: 5vw;
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
@@ -167,8 +137,8 @@ nav a:active {
 
 .cardio {
     background-image: url('/icons/run.png');
-    width: 4vw;
-    height: 4vw;
+    width: 5vw;
+    height: 5vw;
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
@@ -176,8 +146,8 @@ nav a:active {
 
 .gym {
     background-image: url('/icons/gym.png');
-    width: 4vw;
-    height: 4vw;
+    width: 5vw;
+    height: 5vw;
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
@@ -185,8 +155,8 @@ nav a:active {
 
 .strength {
     background-image: url('/icons/strength.png');
-    width: 4vw;
-    height: 4vw;
+    width: 5vw;
+    height: 5vw;
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
@@ -194,8 +164,8 @@ nav a:active {
 
 .yoga {
     background-image: url('/icons/yoga.png');
-    width: 4vw;
-    height: 4vw;
+    width: 5vw;
+    height: 5vw;
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
@@ -203,8 +173,8 @@ nav a:active {
 
 .sports {
     background-image: url('/icons/sports.png');
-    width: 4vw;
-    height: 4vw;
+    width: 5vw;
+    height: 5vw;
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
@@ -212,8 +182,8 @@ nav a:active {
 
 .stretch {
     background-image: url('/icons/stretch.png');
-    width: 4vw;
-    height: 4vw;
+    width: 5vw;
+    height: 5vw;
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
@@ -228,6 +198,10 @@ nav a:active {
     color: black;
     box-shadow: 2px 5px 5px rgb(48, 255, 1);
     border-radius: 10px;
+    font-weight: normal;
+}
+.search strong{
+    text-transform: uppercase;
     font-weight: bolder;
 }
 

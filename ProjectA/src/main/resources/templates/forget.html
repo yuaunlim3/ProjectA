@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Forget Password</title>
+	<link rel="stylesheet" href="/forget.css">
+</head>
+
+<body>
+
+	<header class="pageTitle">
+		Forget Password
+	</header>
+	
+	<div class="box" data-th-if = "${user == null}">
+		<main class="form">
+			<header class="title">New Password</header>
+			<form action="/forgetPassword" method="POST" class="details">
+				<table>
+					<tr>
+						<td>Name:</td>
+						<td>
+							<input type="text" name = "name" class="inputBox" placeholder="Enter Name">
+						</td>
+						<td data-th-if="${errorName != null}" class = error>
+							<p data-th-text="${errorName}"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button type="submit">Forget Password</button>
+						</td>
+					</tr>
+				</table>
+	
+			</form>
+			<section>
+				<form action="/loginpage" method="POST">
+					<button type="submit" class = "button_back">Back</button>
+				</form>
+			</section>
+		</main>
+	</div>
+
+	<div class="box" data-th-if = "${user != null}">
+		<main class="form">
+			<header class="title">New Password</header>
+			<form action="/changePassword" method="POST" class="details">
+				<table>
+					<tr>
+						<td>Name:</td>
+						<td>
+							<input type="text" name = "name" class="inputBox" data-th-value = "${user.name}">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span data-th-text="${user.securityQuestion}"></span>
+						</td>
+						<td>
+							<input type="text" name = "answer" class="inputBox" placeholder="Answer">
+						</td>
+						<td data-th-if="${errorAns != null}" class = error>
+							<p data-th-text="${errorAns}"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>New password</td>
+						<td>
+							<input type="text" name = "password" class="inputBox" placeholder="New password">
+						</td>
+						<td data-th-if="${errorPs != null}" class = error>
+							<p data-th-text="${errorPs}"></p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button type="submit">Change password</button>
+						</td>
+					</tr>
+				</table>
+	
+			</form>
+			<section>
+				<form action="/loginpage" method="POST">
+					<button type="submit" class = "button_back">Back</button>
+				</form>
+			</section>
+		</main>
+	</div>
+
+
+	<footer class ="base">
+		<br>
+	</footer>
+
+</body>
+
+</html>

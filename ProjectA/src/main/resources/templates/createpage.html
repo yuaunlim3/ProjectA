@@ -155,12 +155,38 @@
 							</p>
 						</td>
 					</tr>
+					<tr>
+						<td>Security Question</td>
+						<td>
+							<select data-th-field="*{securityQuestion}">
+								<option value="pet_name">What was the name of your first pet?</option>
+								<option value="birth_city">In what city were you born?</option>
+								<option value="favorite_color">What is your favorite color?</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Answer</td>
+						<td>
+							<input type="text" data-th-field="*{securityAnswer}" class="inputBox" placeholder="Enter Your Answer">
+						</td>
+						<td>
+							<p th:if="${#fields.hasErrors('securityAnswer')}">
+								<ul>
+									<li th:each="err : ${#fields.errors('securityAnswer')}" class="error">
+										<span th:text="${err}"></span>
+									</li>
+								</ul>
+							</p>
+						</td>
+					</tr>
 					
 					<tr>
 						<td>
 							<button type="submit" class="button">Create</button>
 						</td>
 					</tr>
+					
 				</table>
 	
 				<div data-th-if="${#fields.hasErrors('global')}">

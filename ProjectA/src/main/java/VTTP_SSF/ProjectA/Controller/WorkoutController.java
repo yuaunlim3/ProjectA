@@ -27,6 +27,7 @@ public class WorkoutController {
     @Autowired
     private WorkoutServices workoutServices;
 
+     //Navigate from navbar
     @GetMapping("/workout/{name}")
     public String workoutPage(@PathVariable String name, Model model) {
         Users user = accountService.getUser(name);
@@ -35,6 +36,7 @@ public class WorkoutController {
         return "workoutpage";
     }
 
+    //Provide workout details
     @PostMapping("/addworkout/{name}")
     public String addWorkout(@PathVariable String name, Model model, @Valid @ModelAttribute("workout") Workout workout,
             BindingResult bindingResult) {

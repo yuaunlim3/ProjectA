@@ -32,6 +32,7 @@ public class Meals {
         this.date = date;
     }
 
+    //Get total calories consumed
     public Double totalCalories(){
         Double total =  0.0;
         for(Map.Entry<String, List<Food>> entry: this.meal.entrySet()){

@@ -57,56 +57,19 @@ nav a:active {
     color: black;
 }
 
-.dataicon {
-    background-image: url('/icons/data.png'); 
-    width: 2vw;   
-    height: 2vw;     
-    background-size: contain;  
-    background-repeat: no-repeat;  
-    display: inline-block;  
-    background-size: contain;  
-    background-repeat: no-repeat;  
+.homeicon, .mealicon, .workouticon, .dataicon, .leaderboardicon {
+    width: 2vw;
+    height: 2vw;
+    background-size: contain;
+    background-repeat: no-repeat;
     display: inline-block;
 }
 
-.homeicon {
-    background-image: url('/icons/home.png'); 
-    width: 2vw;   
-    height: 2vw;      
-    background-size: contain;  
-    background-repeat: no-repeat;  
-    display: inline-block;    
-    background-size: contain;  
-    background-repeat: no-repeat;  
-    display: inline-block;
-}
-
-.mealicon {
-    background-image: url('/icons/meal.png'); 
-    width: 2vw;   
-    height: 2vw;     
-    background-size: contain;  
-    background-repeat: no-repeat;  
-    display: inline-block;
-}
-
-.workouticon {
-    background-image: url('/icons/workout.png'); 
-    width: 2vw;   
-    height: 2vw;     
-    background-size: contain;  
-    background-repeat: no-repeat;  
-    display: inline-block;
-}
-
-.leaderboardicon {
-    background-image: url('/icons/leaderboard.png'); 
-    width: 2vw;   
-    height: 2vw;      
-    background-size: contain;  
-    background-repeat: no-repeat;  
-    display: inline-block;
-}
+.mealicon {background-image: url('/icons/meal.png');}
+.homeicon { background-image: url('/icons/home.png'); }
+.workouticon { background-image: url('/icons/workout.png'); }
+.dataicon { background-image: url('/icons/data.png'); }
+.leaderboardicon { background-image: url('/icons/leaderboard.png'); }
 
 .info {
     display: flex;
@@ -114,7 +77,7 @@ nav a:active {
     flex-wrap: wrap;
 }
 
-.name,.password,.id,.date,.height, .weight ,.level,.aim{
+.name,.password,.id,.date,.height, .weight ,.level,.aim,.security{
     background: linear-gradient(to right, yellow, orange);
     width: 35vw;
     height: 15vw;
@@ -127,6 +90,25 @@ nav a:active {
     font-weight: bolder;
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display:block;
+}
+
+.danger{
+    background: linear-gradient(to right, rgb(246, 104, 104), rgb(190, 2, 2));
+    width: 35vw;
+    height: 15vw;
+    padding: 5vw;
+    margin: 8vw;
+    font-size: 2.5vw;
+    color: black;
+    box-shadow: 2px 5px 5px rgb(0, 0, 0);
+    border-radius: 20px;
+    font-weight: bolder;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display:block;
+}
+.danger .text{
+    font-size: 4vw;
+    font-weight: bolder;
 }
 
 
@@ -143,7 +125,7 @@ nav a:active {
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.password:hover, .height:hover, .weight:hover, .level:hover,.aim:hover{
+.password:hover, .height:hover, .weight:hover, .level:hover,.aim:hover,.danger:hover{
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
 }
@@ -156,6 +138,8 @@ nav a:active {
     height: 30vw;
     padding: 5vw;
     box-sizing: border-box;
+    background: linear-gradient(to right, rgb(246, 104, 104), rgb(190, 2, 2));
+    box-shadow: 2px 5px 5px rgb(0, 0, 0);
     background: linear-gradient(to right, yellow, orange);
     box-shadow: 2px 5px 5px yellow;
     border-radius: 20px;
@@ -164,8 +148,24 @@ nav a:active {
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     align-content: center;
 }
+.danger .change{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55vw;
+    height: 30vw;
+    padding: 5vw;
+    box-sizing: border-box;
+    background: linear-gradient(to right, rgb(246, 104, 104), rgb(190, 2, 2));
+    box-shadow: 2px 5px 5px rgb(0, 0, 0);
+    border-radius: 20px;
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    align-content: center;
+}
 
-.password:hover .change, .height:hover .change, .weight:hover .change, .level:hover .change,.aim:hover .change{
+.password:hover .change, .height:hover .change, .weight:hover .change, .level:hover .change,.aim:hover .change, .danger:hover .change{
     transform: rotateX(0deg);
 }
 

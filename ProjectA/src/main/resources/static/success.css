@@ -60,8 +60,7 @@ nav a:active {
     color: black;
 }
 
-.dataicon {
-    background-image: url('/icons/data.png');
+.homeicon, .infoicon, .mealicon, .workouticon, .dataicon, .leaderboardicon {
     width: 2vw;
     height: 2vw;
     background-size: contain;
@@ -69,50 +68,12 @@ nav a:active {
     display: inline-block;
 }
 
-.infoicon {
-    background-image: url('/icons/info.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
-
-.mealicon {
-    background-image: url('/icons/meal.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
-
-.workouticon {
-    background-image: url('/icons/workout.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
-
-.homeicon {
-    background-image: url('/icons/home.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
-
-.leaderboardicon {
-    background-image: url('/icons/leaderboard.png');
-    width: 2vw;
-    height: 2vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
+.mealicon {background-image: url('/icons/meal.png');}
+.homeicon { background-image: url('/icons/home.png'); }
+.infoicon { background-image: url('/icons/info.png'); }
+.workouticon { background-image: url('/icons/workout.png'); }
+.dataicon { background-image: url('/icons/data.png'); }
+.leaderboardicon { background-image: url('/icons/leaderboard.png'); }
 
 .success {
     display: flex;
@@ -135,7 +96,7 @@ nav a:active {
 .card h2{
     z-index: 1;
     color: white;
-    font-size: 7vw;
+    font-size: 6vw;
 }
 
 .card::before {

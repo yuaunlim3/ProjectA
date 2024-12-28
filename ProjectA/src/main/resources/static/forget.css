@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(45deg, #d3d3d3, #a9a9a9, #808080, #696969, #000000);
+    background-attachment: fixed;
+    background-size: 500%;
+    animation: backgroundAnimation 4s infinite ease;
+}
+
+@keyframes backgroundAnimation {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.pageTitle {
+    background-color: black;
+    color: white;
+    font-size: 5vw;
+    padding: 2vw;
+    font-weight: bolder;
+    text-align: center;
+    box-shadow: 2px 10px 10px white;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.form {
+    display: table;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#212121, #212121) padding-box,
+        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+    padding: 2vw;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px white;
+
+}
+
+.title {
+    font-weight: bolder;
+    color: white;
+    font-size: 2vw;
+}
+
+.details{
+    background-color: #15172b;
+    border: 2px solid black;
+    color: white;
+    border-radius: 10px;
+    padding: 2vw;
+    font-size: 2.5vw;
+}
+.error{
+    color: red;
+    font-size: 1.5vw;
+}
+
+tr ,td{
+    padding: 20px;
+  }
+  
+
+.inputBox{
+    width: 30vw;
+    padding: 2vw;
+    font-size: 1.7vw;
+    color: black;
+    border-radius: 20px;
+    outline: none;
+}
+
+
+button {
+    font-size: 2.5vw;
+    color: #e1e1e1;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+  }
+  
+  button:focus,
+  button:hover {
+    color: #fff;
+  }
+  
+  button:focus:after,
+  button:hover:after {
+    width: 100%;
+    left: 0%;
+  }
+  
+  button:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+  }
+  .base {
+    background-color: black;
+    color: white;
+    font-size: 2vw;
+    padding: 2vw;
+    font-weight: bolder;
+    text-align: center;
+    box-shadow: 10px 10px 10px 20px white;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }

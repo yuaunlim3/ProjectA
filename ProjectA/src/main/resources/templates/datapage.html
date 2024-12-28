@@ -21,7 +21,7 @@
         <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals
             <i class="mealicon"></i>
         </a>
-        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add Workout
             <i class="workouticon"></i>
         </a>
         <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard
@@ -49,10 +49,12 @@
                             </span>
                             <span data-th-if="${entry.key == 'Gym'}">
                                 <i class="gym"></i>
+                                <p> </p>
                                 <span data-th-text="${entry.key}"></span>
                             </span>
                             <span data-th-if="${entry.key == 'Yoga'}">
                                 <i class="yoga"></i>
+                                <p> </p>
                                 <span data-th-text="${entry.key}"></span>
                             </span>
                             <span data-th-if="${entry.key == 'Strength'}">
@@ -142,7 +144,7 @@
                 <table data-th-each="meal : ${entry.meal}">
                     <tr>
                         <td>
-                            <span data-th-text="${meal.key}"></span>
+                            <strong data-th-text="${meal.key}"></strong>
                             <table>
                                 <tr>
                                     <th>Food</th>
@@ -158,7 +160,7 @@
                 </table>
                 <hr>
             </div>
-        </div>
+        </div> 
 
 
         <div data-th-if="${query == 'workout'}">
@@ -167,14 +169,14 @@
             </div>
             <div data-th-each="entry : ${result}" class="burnt">
                 <h4>Date: <span data-th-text="${entry.date}"></span></h4>
-                <h4>The total Calories consumed: <span data-th-text="${entry.totalCalories}"></span> kcal</h4>
+                <h4>The total Calories burnt: <span data-th-text="${entry.totalCalories}"></span> kcal</h4>
                 <table>
                     <tbody>
                         <tr>
                             <td data-th-each="type : ${entry.types}">
                                 <span data-th-if="${type.key == 'Cardio'}">
                                     <i class="cardio"></i>
-                                    <span data-th-text="${type.key}"></span>
+                                    <strong data-th-text="${type.key}"></strong>
                                 </span>
                                 <span data-th-if="${type.key == 'Gym'}">
                                     <i class="gym"></i>

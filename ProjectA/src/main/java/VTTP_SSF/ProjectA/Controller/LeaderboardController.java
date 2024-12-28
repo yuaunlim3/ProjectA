@@ -26,6 +26,7 @@ public class LeaderboardController {
     @Autowired
     private DataServices dataServices;
 
+    //Navigate from navbar
     @GetMapping("/leaderboard/{name}")
     public String dataPage(@PathVariable String name, Model model) {
         Users user = accountService.getUser(name);
@@ -35,6 +36,7 @@ public class LeaderboardController {
 
     } 
 
+    //Search leaderboard based on category
     @PostMapping("/leaderboard/{name}")
     public String getLeaderBoard(@PathVariable String name,@RequestParam String category, Model model) {
         Users user = accountService.getUser(name);
@@ -50,6 +52,7 @@ public class LeaderboardController {
 
     }
 
+    //Go to other user datapage
     @GetMapping("datas/{loginName}/{name}")
     public String search(@PathVariable String loginName,@PathVariable String name, Model model){
         Users loginUser = accountService.getUser(loginName);
@@ -60,7 +63,7 @@ public class LeaderboardController {
         return "search";
     }
 
-    
+    //search for other user datas
     @PostMapping("datas/{loginName}/{name}")
     public String getData(@PathVariable String loginName,@PathVariable String name, @RequestParam String category, @RequestParam String year,
     @RequestParam String month, Model model){

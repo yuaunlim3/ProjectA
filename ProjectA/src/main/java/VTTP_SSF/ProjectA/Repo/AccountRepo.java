@@ -19,6 +19,7 @@ public class AccountRepo {
     private RedisTemplate<String, String> template;
 
     // get name
+    //Get user
     public Users getUser(String name) {
         String value = (String) template.opsForValue().get(name);
         if (value != null) {
@@ -38,6 +39,7 @@ public class AccountRepo {
     }
 
     // get name
+    //Update the password
     public void updatePassword(String password, String name) {
         String value = (String) template.opsForValue().get(name);
         if (value != null) {
@@ -56,6 +58,7 @@ public class AccountRepo {
     }
 
     // get name
+    //Update the weight
     public void updateWeight(Long weight, String name) {
         String value = (String) template.opsForValue().get(name);
         if (value != null) {
@@ -74,6 +77,8 @@ public class AccountRepo {
     }
 
     // get name
+
+    //update the height
     public void updateHeight(Long height, String name) {
         String value = (String) template.opsForValue().get(name);
         if (value != null) {
@@ -92,6 +97,8 @@ public class AccountRepo {
     }
 
     // get name
+
+    //update the aim of the user
     public void updateAim(String aim, String name) {
         String value = (String) template.opsForValue().get(name);
         if (value != null) {
@@ -110,6 +117,8 @@ public class AccountRepo {
     }
 
     // get name
+
+    //Update the active level of the user
     public void updateActLevel(String actLevel, String name) {
         String value = (String) template.opsForValue().get(name);
         if (value != null) {
@@ -129,6 +138,18 @@ public class AccountRepo {
 
     public String getRandomAccount(){
         return template.randomKey();
+    }
+
+
+    //Delete the account
+    public void deleteAccount(String name){
+        String value = (String) template.opsForValue().get(name);
+        
+        if (value != null) {
+            template.delete(name);
+        } else {
+            System.out.println("Account with name " + name + " not found.");
+        }
     }
 
 }

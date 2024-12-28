@@ -43,6 +43,9 @@ public class NewUsers {
     private Stack<BurnsCal> workouts;
     private Stack<Data> overallDatas;
     private Integer daysLogin;
+    private String securityQuestion;
+    @NotEmpty(message = "Answer must be given")
+    private String securityAnswer;
 
     public JsonObject toJson() {
 
@@ -59,10 +62,9 @@ public class NewUsers {
         }
 
         JsonArrayBuilder overallArr = Json.createArrayBuilder();
-        for(Data data: this.overallDatas){
+        for (Data data : this.overallDatas) {
             overallArr.add(data.toJson());
         }
-        
 
         JsonObject personalData = Json.createObjectBuilder()
                 .add("id", this.id)
@@ -73,6 +75,8 @@ public class NewUsers {
                 .add("age", this.age)
                 .add("gender", this.gender)
                 .add("days_login", this.daysLogin)
+                .add("security_question",this.securityQuestion)
+                .add("security_answer",this.securityAnswer)
                 .build();
 
         JsonObject physicalData = Json.createObjectBuilder()
@@ -89,6 +93,7 @@ public class NewUsers {
                 .add("overall_Data", overallArr)
                 .build();
     }
+
 
     public Stack<Meals> getMeals() {
         return meals;
@@ -209,6 +214,24 @@ public class NewUsers {
     public void setDaysLogin(Integer daysLogin) {
         this.daysLogin = daysLogin;
     }
+
+    public String getSecurityQuestion() {
+        return securityQuestion;
+    }
+
+    public void setSecurityQuestion(String securityQuestion) {
+        this.securityQuestion = securityQuestion;
+    }
+
+    public String getSecurityAnswer() {
+        return securityAnswer;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {
+        this.securityAnswer = securityAnswer;
+    }
+
+    
 
     
 

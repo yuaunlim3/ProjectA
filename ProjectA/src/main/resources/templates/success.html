@@ -9,12 +9,24 @@
 <body>
     <header> Success page</header>
     <nav>
-        <a data-th-href="@{/homepage/{name}(name=${loginUser.name})}">Home</a>
-        <a data-th-href="@{/accountInfo/{name}(name=${loginUser.name})}">Account Info</a>
-        <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals</a>
-        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout</a>
-        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past datas</a>
-        <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard</a>
+        <a data-th-href="@{/homepage/{name}(name=${loginUser.name})}">Home
+            <i class="homeicon"></i>
+        </a>
+        <a data-th-href="@{/accountInfo/{name}(name=${loginUser.name})}">Account Info
+            <i class="infoicon"></i>
+        </a>
+        <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals
+            <i class="mealicon"></i>
+        </a>
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add Workout
+            <i class="workouticon"></i>
+        </a>
+        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past Datas
+            <i class="dataicon"></i>
+        </a>
+        <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard
+            <i class="leaderboardicon"></i>
+        </a>
     </nav>
 
     <main class="success">

@@ -26,6 +26,7 @@ public class DataController {
     @Autowired
     private DataServices dataServices;
 
+    //Navigate from navbar
     @GetMapping("/datas/{name}")
     public String dataPage(@PathVariable String name, Model model) {
         Users user = accountService.getUser(name);
@@ -35,9 +36,10 @@ public class DataController {
 
     }
 
+    // search for particular data based on category,year,month
     @PostMapping("/datas/{name}")
     public String search(@PathVariable String name, @RequestParam String category, @RequestParam String year,
-            @RequestParam String month, Model model) {
+        @RequestParam String month, Model model) {
         Users user = accountService.getUser(name);
         model.addAttribute("loginUser", user);
 

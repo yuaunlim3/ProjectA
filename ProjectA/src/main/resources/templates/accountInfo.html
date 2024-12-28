@@ -17,10 +17,10 @@
         <a data-th-href="@{/meals/{name}(name=${loginUser.name})}">Add Meals
             <i class="mealicon"></i>
         </a>
-        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add workout
+        <a data-th-href="@{/workout/{name}(name=${loginUser.name})}">Add Workout
             <i class="workouticon"></i>
         </a>
-        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past datas
+        <a data-th-href="@{/datas/{name}(name=${loginUser.name})}">Past Datas
             <i class="dataicon"></i>
         </a>
         <a data-th-href="@{/leaderboard/{name}(name=${loginUser.name})}">Leaderboard
@@ -143,6 +143,33 @@
                         </select>
                     </td>
                     <button type="submit">Change</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="security">
+            <section>
+                <span class="text">Question:</span>
+                <br>
+                <span data-th-text="${loginUser.securityQuestion}"></span>
+            </section>
+            <section>
+                <span class="text">Answer</span>
+                <br>
+                <span data-th-text="${loginUser.securityAnswer}"></span>
+            </section>
+        </div>
+
+        <div class="danger">
+            <section class ="content">
+                <span class="text">Delete Account</span>
+            </section>
+            <div class="change">
+                <p class="title">Are you sure?</p>
+                <form action="/loginpage" method="POST" class="form">
+                    <input type="hidden" name="delete" value="yes">
+                    <input type="hidden" name="name" data-th-value="${loginUser.name}">
+                    <button type="submit">Delete</button>
                 </form>
             </div>
         </div>

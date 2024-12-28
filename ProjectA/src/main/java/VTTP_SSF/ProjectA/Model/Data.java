@@ -36,6 +36,7 @@ public class Data {
         return data;
     }
 
+    //Initialize the data to the current date
     public Data(){
         this.intake = 0.0;
         this.burnt = 0.0;

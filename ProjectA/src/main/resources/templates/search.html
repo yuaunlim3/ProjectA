@@ -92,6 +92,7 @@
                         <tr>
                             <td>
                                 <i class="food"></i>
+                                <p>  </p>
                                 <span>Food consumed</span>
                             </td>
                             <td data-th-each="entry : ${searchUser.averageWorkout}">
@@ -101,10 +102,12 @@
                                 </span>
                                 <span data-th-if="${entry.key == 'Gym'}">
                                     <i class="gym"></i>
+                                    <p> </p>
                                     <span data-th-text="${entry.key}"></span>
                                 </span>
                                 <span data-th-if="${entry.key == 'Yoga'}">
                                     <i class="yoga"></i>
+                                    <p> </p>
                                     <span data-th-text="${entry.key}"></span>
                                 </span>
                                 <span data-th-if="${entry.key == 'Strength'}">
@@ -220,7 +223,7 @@
                     </div>
                     <div data-th-each="entry : ${result}" class="burnt">
                         <h4>Date: <span data-th-text="${entry.date}"></span></h4>
-                        <h4>The total Calories consumed: <span data-th-text="${entry.totalCalories}"></span> kcal</h4>
+                        <h4>The total Calories burnt: <span data-th-text="${entry.totalCalories}"></span> kcal</h4>
                         <table>
                             <tbody>
                                 <tr>
