@@ -202,3 +202,51 @@ nav a:active {
     padding: 4vw;
     text-align: center;
 }
+
+section.api {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, rgb(133, 174, 255), rgb(43, 111, 246));
+    margin: 1.5vw;
+    border-radius: 10px;
+    box-shadow:  2px 5px 5px rgba(109, 129, 247, 0.615);
+}
+
+section.api h2 {
+    text-align: center;
+    font-size: 3vw;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+section.api table {
+    width: 100%;
+    margin-top: 1vw;
+    border-collapse: collapse;
+    background-color: rgb(139, 139, 139);
+    border-radius: 8px;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+section.api table thead {
+    background-color: #4CAF50;
+    color: white;
+}
+.url, .info{
+    background-color: #4CAF50;
+    color: white; 
+}
+section.api table th, table td {
+    padding: 2vw;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+section.api table td {
+    font-size: 1vw;
+}
+
+section.api table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

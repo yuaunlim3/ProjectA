@@ -212,6 +212,238 @@
 
     </section>
 
+    <section class="api">
+        <h2>API INFORMATION</h2>
+    
+        <table>
+            <thead>
+                <tr>
+                    <td><strong>Get User Information (Only visible to the user)</strong></td>
+                
+                </tr>
+                <tr>
+                    <td class = "info">This endpoint retrieves sensitive user data. Authentication is required to access private information.</td>
+                </tr>
+                <tr>
+                    <td class="url">URL: /getData/user_name/user_password</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <pre>
+                            {
+                                "personal_Data": {
+                                  "id": // Unique user identifier
+                                  "name":    // User's  name
+                                  "password":  // Encrypted password (not visible to the public)
+                                  "createdDate": "2024-12-27", // Account creation date
+                                  "lastLogin": "2024-12-29", // Last login date
+                                  "age": 30,        // User's age
+                                  "gender": "male", // User's gender
+                                  "days_login": 3,  // Total days logged in
+                                  "security_question": "What is your favorite color", // Security question
+                                  "security_answer": "Blue" // Security answer
+                                },
+                                "physical_Data": {
+                                  "weight": 80,      // User's weight in kg
+                                  "height": 180,     // User's height in cm
+                                  "aim": "lose",     // User's fitness aim (e.g., "lose", "maintain", "gain")
+                                  "actLevel": "active" // User's activity level (e.g., "low", "moderate", "active")
+                                },
+                                "meals_Data": [
+                                  {
+                                    "date": "2024-12-27", // Date of the meal
+                                    "meal": {
+                                      "lunch": [
+                                        {
+                                          "foodName": "Chicken rice", // Food item name
+                                          "calories": 316.88 // Calories for this food item
+                                        }
+                                      ],
+                                      "breakfast": [
+                                        {
+                                          "foodName": "French toast", // Food item name
+                                          "calories": 219.42 // Calories for this food item
+                                        }
+                                      ],
+                                      "dinner": [
+                                        {
+                                          "foodName": "Roasted pork with rice", // Food item name
+                                          "calories": 453.6 // Calories for this food item
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "date": "2024-12-28", // No meals logged on this day
+                                    "meal": {}
+                                  },
+                                  {
+                                    "date": "2024-12-29", // No meals logged on this day
+                                    "meal": {}
+                                  }
+                                ],
+                                "workout_Data": [
+                                  {
+                                    "date": "2024-12-27", // Date of workout
+                                    "workouts": [
+                                      {
+                                        "workout": "Football", // Name of the workout
+                                        "duration_mins": 90,   // Duration in minutes
+                                        "type": "Sports",      // Type of workout (e.g., "Sports", "Cardio", "Strength")
+                                        "calories": 840        // Calories burnt during the workout
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "date": "2024-12-28", // No workouts on this day
+                                    "workouts": []
+                                  },
+                                  {
+                                    "date": "2024-12-29", // No workouts on this day
+                                    "workouts": []
+                                  }
+                                ],
+                                "overall_Data": [
+                                  {
+                                    "date": "2024-12-27", // Date for overall data summary
+                                    "intake": 989.9,     // Total calories consumed
+                                    "burnt": 840,        // Total calories burnt
+                                    "net": 149.9         // Net calories (intake - burnt)
+                                  },
+                                  {
+                                    "date": "2024-12-28", // No data logged for this day
+                                    "intake": 0,
+                                    "burnt": 0,
+                                    "net": 0
+                                  },
+                                  {
+                                    "date": "2024-12-29", // No data logged for this day
+                                    "intake": 0,
+                                    "burnt": 0,
+                                    "net": 0
+                                  }
+                                ]
+                              }
+                        </pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <td><strong>Get User Information (Visible to the public)</strong></td>
+                </tr>
+                <tr>
+                    <td class = "info"> This endpoint retrieves user data that is available publicly. Authentication is not required.</td>
+                </tr>
+                <tr>
+                    <td class="url">URL: /getData/user_name</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <pre>
+                            {
+                                "personal_Data": {
+                                  "id":  // Unique user identifier
+                                  "name":  // User's full name
+                                  "age": 30,        // User's age
+                                  "gender": "male", // User's gender
+                                  "days_login": 3   // Total days logged in
+                                },
+                                "physical_Data": {
+                                  "weight": 80,      // User's weight in kg
+                                  "height": 180,     // User's height in cm
+                                  "aim": "lose",     // User's fitness aim (e.g., "lose", "maintain", "gain")
+                                  "actLevel": "active" // User's activity level (e.g., "low", "moderate", "active")
+                                },
+                                "meals_Data": [
+                                  {
+                                    "date": "2024-12-27", // Date of the meal
+                                    "meal": {
+                                      "lunch": [
+                                        {
+                                          "foodName": "Chicken rice", // Food item name
+                                          "calories": 316.88 // Calories for this food item
+                                        }
+                                      ],
+                                      "breakfast": [
+                                        {
+                                          "foodName": "French toast", // Food item name
+                                          "calories": 219.42 // Calories for this food item
+                                        }
+                                      ],
+                                      "dinner": [
+                                        {
+                                          "foodName": "Roasted pork with rice", // Food item name
+                                          "calories": 453.6 // Calories for this food item
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "date": "2024-12-28", // No meals logged on this day
+                                    "meal": {}
+                                  },
+                                  {
+                                    "date": "2024-12-29", // No meals logged on this day
+                                    "meal": {}
+                                  }
+                                ],
+                                "workout_Data": [
+                                  {
+                                    "date": "2024-12-27", // Date of workout
+                                    "workouts": [
+                                      {
+                                        "workout": "Football", // Name of the workout
+                                        "duration_mins": 90,   // Duration in minutes
+                                        "type": "Sports",      // Type of workout (e.g., "Sports", "Cardio", "Strength")
+                                        "calories": 840        // Calories burnt during the workout
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "date": "2024-12-28", // No workouts on this day
+                                    "workouts": []
+                                  },
+                                  {
+                                    "date": "2024-12-29", // No workouts on this day
+                                    "workouts": []
+                                  }
+                                ],
+                                "overall_Data": [
+                                  {
+                                    "date": "2024-12-27", // Date for overall data summary
+                                    "intake": 989.9,     // Total calories consumed
+                                    "burnt": 840,        // Total calories burnt
+                                    "net": 149.9         // Net calories (intake - burnt)
+                                  },
+                                  {
+                                    "date": "2024-12-28", // No data logged for this day
+                                    "intake": 0,
+                                    "burnt": 0,
+                                    "net": 0
+                                  },
+                                  {
+                                    "date": "2024-12-29", // No data logged for this day
+                                    "intake": 0,
+                                    "burnt": 0,
+                                    "net": 0
+                                  }
+                                ]
+                              }
+                        </pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+
 
 </body>
 
